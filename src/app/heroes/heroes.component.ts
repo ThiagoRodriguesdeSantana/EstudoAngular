@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {Hero}from '../hero';
+import { HEROES } from '../mock-heroes';
 
 @Component({
   selector: 'app-heroes',
@@ -7,13 +8,21 @@ import {Hero}from '../hero';
   styleUrls: ['./heroes.component.css'],
   encapsulation: ViewEncapsulation.None
 })
+
 export class HeroesComponent implements OnInit {
 
-  hero:Hero = {
+ 
+  selectedHero: Hero = {
     id : 2,
     name : 'Windstorm'
 
+  };
+  
+  onSelect(hero: Hero): void {
+    this.selectedHero = hero !=null ?hero:  new Hero();
   }
+  
+  heroes = HEROES;
 
   constructor() { }
 
